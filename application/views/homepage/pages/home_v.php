@@ -97,7 +97,8 @@
                 	var address     = $("input[name=address]").val();
                 	var kp_id       = $("input[name='kp_id[]']").map(function(){return $(this).val();}).get();
                 	var kriteria_id = $("input[name=kriteria_id]").val();
-                	
+						// var kriteria_bobot = $("input[name=kriteria_bobot]").val();
+
                 	if(kp_id.length > 1) {
                 		var jawaban = [];
                 		var index   = 0;
@@ -160,11 +161,11 @@
 	  	$(document).ready(function(){
 		 	// e.preventDefault();
 		 	var id = $(this).val();
-			 if(id = 1) {
-				getQuestionKriteria(id = 1);
-		 	}else{
-		 		getQuestionKriteria(id);
-		 	}
+			 getQuestionKriteria(id);
+			//  if(id = 1) {
+			// 	getQuestionKriteria(id = 1);
+		 	// }else{
+		 	// }
 	  	});
 
 	  	getQuestionKriteria = (id) => {

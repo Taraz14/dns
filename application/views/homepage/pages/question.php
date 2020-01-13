@@ -7,8 +7,9 @@
 			<strong>Kriteria : <?= $qst["kriteria_name"] ?></strong>
 			<label><?= $qst['pertanyaan'] ?> <br/></label>
 			<input type="hidden" class="kp_id" id="kp_id" name="kp_id[]" value="<?= $qst['kp_id'] ?>">
-			<input type="hidden" class="kriteria_id" id="kriteria_id" name="kriteria_id" value="<?= $qst['kriteria_id'] ?>">
+			<input type="hidden" class="kriteria_id" id="kriteria_id" name="kriteria_id[]" value="<?= $qst['kriteria_id'] ?>">
 			<input type="hidden" class="bobot" id="bobot" name="bobot[]" value="<?= $qst['bobot'] ?>">
+			<input type="hidden" class="kriteria_bobot" id="kriteria_bobot" name="kriteria_bobot[]" value="<?= $qst['kriteria_bobot'] ?>">
             <?php
 			$answer   = HomeModel::findAnswer(["kp_id" => $qst['kp_id']]);
 			$no       = 0;

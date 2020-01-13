@@ -61,7 +61,7 @@ class HomeModel extends CI_Model {
 	public static function findQuestion() : array
 	{
 		return static::$db
-			->select("kp.*, k.kriteria_name")
+			->select("kp.*, k.*")
 			->from('kriteria_pertanyaan kp')
 			->join('kriteria k','k.kriteria_id = kp.kriteria_id','inner')
 			->get()

@@ -47,7 +47,7 @@ class Homepage extends CI_Controller {
 	*/
    private function createHasil()
    {
-	  var_dump($this->input->post());die();
+	  var_dump($this->input->post('kriteria_id'));die();
    }
 
 	/**
