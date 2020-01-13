@@ -73,7 +73,7 @@ class Homepage extends CI_Controller {
 	public function getQuestion() : void
 	{
 		$view = $this->load->view("homepage/pages/question",[
-			"content" => HomeModel::findQuestion(["kriteria_id" => (int) $this->input->get('id')])
+			"content" => HomeModel::findQuestion()
 		],TRUE);
 		$this->output
 			->set_content_type('application/json')

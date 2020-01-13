@@ -19,6 +19,9 @@
     <link href="<?= base_url()?>assets/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
     <style type="text/css">
         .table-borderless td, .borderless th{border: none;}
+        .wizard > .steps > ul > li {
+            width: 33.3%;
+        }
     </style>
 </head>
 

@@ -31,33 +31,6 @@
 					 </div>
 				</div>
 			</fieldset>
-
-			<!-- <h1>Kriteria</h1>
-			<fieldset>
-				<h2>Memilih Kriteria</h2>
-				<div class="row">
-					 <div class="col-lg-8">
-						<div class="form-group">
-							<label class="font-normal">Pilih Kriteria</label>
-							<div>
-							<select id="select-kriteria" data-placeholder="Choose a Country..." class="chosen-select required">
-								 <option value="">Select</option>
-								 <?php foreach($kriteria as $data) : ?>
-								 <option value="<?= $data["kriteria_id"]; ?>"><?= $data["kriteria_name"] ?></option>
-								 <?php endforeach; ?>
-							</select>
-							</div>
-						</div>
-					 </div>
-					 <div class="col-lg-4">
-						<div class="text-center">
-							<div style="margin-top: 20px">
-								 <i class="fa fa-sign-in" style="font-size: 180px;color: #e5e5e5 "></i>
-							</div>
-						</div>
-					 </div>
-				</div>
-			</fieldset> -->
 			<h1>Sample Pertanyaan</h1>
 			<fieldset>
 				<div id="question-content"></div>
@@ -118,7 +91,7 @@
                     $(this).steps("previous");
                 }
 
-                if(currentIndex === 3) {
+                if(currentIndex === 2) {
                 	var firtsName   = $("input[name=name]").val();
                 	var lastName    = $("input[name=lastname]").val();
                 	var address     = $("input[name=address]").val();
