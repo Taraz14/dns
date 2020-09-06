@@ -35,7 +35,12 @@
     <!-- Jquery Validate -->
     <script src="<?= base_url()?>assets/admin/js/plugins/validate/jquery.validate.min.js"></script>
     
-
+    <!-- TouchSpin -->
+    <script src="<?= base_url()?>assets/admin/js/plugins/touchspin/jquery.bootstrap-touchspin.min.js"></script>
+    
+    <!-- Datatables -->
+    <script src="<?= base_url()?>assets/admin/js/plugins/dataTables/datatables.min.js"></script>
+    <script src="<?= base_url()?>assets/admin/js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -48,6 +53,23 @@
             });
 
             $('.chosen-select').chosen({width: "100%"});
+
+            $(".touchspin3").TouchSpin({
+                verticalbuttons: true,
+                min : 1,
+                buttondown_class: 'btn btn-white',
+                buttonup_class: 'btn btn-white'
+            });
+
+            $('#history').DataTable({
+                "processing" : true,
+                "serverSide" : true,
+                "order"      : [],
+                "ajax"       : {
+                    url : '<?= site_url('homepage/dataHistory')?>',
+                },
+                    "responsive" : true
+            });
        });
     </script>
 

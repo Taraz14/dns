@@ -1,8 +1,6 @@
 <div class="footer">
-            <div>
-                <strong>Copyright</strong> Determination of Nutritional Status &copy; 2019-2020
-            </div>
-        </div>
-
-        </div>
-    </div>
+    <div>
+        <strong>Copyright</strong> <a href="https://github.com/Chuibility/inspinia"> Determination of Nutritional Status</a> &copy; 2019-2020 </div>
+</div>
+</div>
+</div>

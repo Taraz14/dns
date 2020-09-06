@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  * Authemtication Class
@@ -11,7 +11,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @category	Authentication
  * @author  	Semarsite
  */
-class AuthenticationModel extends CI_Model {
+class AuthenticationModel extends CI_Model
+{
 
 	/**
 	 * Minimal Limit
@@ -43,13 +44,13 @@ class AuthenticationModel extends CI_Model {
 		 * Set value varible $db
 		 * @var object
 		 */
-		self::$db =& get_instance()->db;
+		self::$db = &get_instance()->db;
 
 		/**
 		 * Set value varible $input
 		 * @var array
 		 */
-		self::$input =& get_instance()->input;
+		self::$input = &get_instance()->input;
 	}
 
 	/**
@@ -59,7 +60,7 @@ class AuthenticationModel extends CI_Model {
 	 */
 	public static function verifyAccount()
 	{
-		if(static::$input->post('btnSignIn') !== 'true') {
+		if (static::$input->post('btnSignIn') !== 'true') {
 			return false;
 		}
 
@@ -67,12 +68,12 @@ class AuthenticationModel extends CI_Model {
 			"admin_username" => static::$input->post('username')
 		]);
 
-		if($account->num_rows() !== 1) {
+		if ($account->num_rows() !== 1) {
 			return false;
 		}
 
 		$password = $account->row()->admin_password;
-		if(! static::isValidPassword($password)) {
+		if (!static::isValidPassword($password)) {
 			return false;
 		}
 
@@ -96,10 +97,10 @@ class AuthenticationModel extends CI_Model {
 	 * @param  string $password
 	 * @return boolean
 	 */
-	private static function isValidPassword(string $password) : bool
+	private static function isValidPassword(string $password): bool
 	{
 		return password_verify(static::$input->post('password'), $password);
-	} 
+	}
 }
 
 /* End of file AuthenticationModel.php */

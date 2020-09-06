@@ -12,7 +12,7 @@
                     </div>
                 </li>
                 <li class="<?= ($this->uri->segment(2) == "dashboard") ? "active" : "" ?>">
-                    <a href="<?= site_url('admin')?>"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
+                    <a href="<?= site_url('0/dashboard')?>"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
                 </li>
                 <li class="<?= ($this->uri->segment(2) == "kriteria" || $this->uri->segment(2) == "alternatif" || $this->uri->segment(2) == "pertanyaan" || $this->uri->segment(2) == "jawaban") ? "active" : "" ?>">
                     <a href="#"><i class="fa fa-list"></i> <span class="nav-label">Data Master</span><span class="fa arrow"></span></a>

@@ -5,7 +5,13 @@ $route['default_controller']   = 'homepage';
 
 //user
 $route['get-question']		   = 'HomePage/getQuestion';
-$route['get-hasil']		       = 'HomePage/getHasil';
+$route['get-hasil']		      = 'HomePage/getHasil';
+$route['get-kriteria']        = 'HomePage/getKriteria';
+$route['get-spk']             = 'spk';
+
+//history
+$route['history']   = 'homepage/history';
+
 //auth
 $route['service/sign-in'] 	   = 'Authentication';
 $route['service/sign-out'] 	   = 'Authentication/signOut';

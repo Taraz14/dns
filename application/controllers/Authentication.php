@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  * Authemtication Class
@@ -9,9 +9,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @package		SPK-GIZI
  * @subpackage	Controller
  * @category	Authentication
- * @author  	Semar Site
+ * @author  	Semarsite
  */
-class Authentication extends CI_Controller {
+class Authentication extends CI_Controller
+{
 
 	/**
 	 * Construct Magic
@@ -19,7 +20,7 @@ class Authentication extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		
+
 		/** Load Model Authentikasi */
 		$this->load->model('AuthenticationModel');
 	}
@@ -29,18 +30,18 @@ class Authentication extends CI_Controller {
 	 * 
 	 * @return void
 	 */
-	private function isSignIn() : void
+	private function isSignIn(): void
 	{
 		$session = $this->session;
-		if($session->isLoggon && $session->isAdmin) redirect('0/dashboard','refresh');
+		if ($session->isLoggon && $session->isAdmin) redirect('0/dashboard', 'refresh');
 	}
 
-   /**
+	/**
 	 * Default function Authentication
 	 * 
 	 * @return void
 	 */
-	public function index() : void
+	public function index(): void
 	{
 		$this->signIn();
 	}
@@ -56,7 +57,7 @@ class Authentication extends CI_Controller {
 		$rules = $this->config;
 
 		$valid->set_rules($rules->item('login'));
-		if( ! $valid->run()) {
+		if (!$valid->run()) {
 			return $this->pageSignIn();
 		}
 		return $this->actionSignIn();
@@ -67,7 +68,7 @@ class Authentication extends CI_Controller {
 	 * 
 	 * @return void
 	 */
-	private function pageSignIn() : void
+	private function pageSignIn(): void
 	{
 		$this->load->view('auth/login_v');
 	}
@@ -77,8 +78,12 @@ class Authentication extends CI_Controller {
 	 */
 	private function actionSignIn()
 	{
+		$recaptcha = $this->verifyRecaptcha();
+		if (!$recaptcha->success)
+			return direct('Invalid recaptcha', 'service/sign-in');
+
 		$validAccount = AuthenticationModel::verifyAccount();
-		if(! $validAccount) {
+		if (!$validAccount) {
 			return direct('Username atau Password Salah', 'service/sign-in');
 		}
 
@@ -86,11 +91,31 @@ class Authentication extends CI_Controller {
 	}
 
 	/**
+	 * Verify Recaptcha
+	 */
+	private function verifyRecaptcha()
+	{
+		$data = array(
+			'secret'   => "6LeTf9wUAAAAABHuAxJwbWxJY3CkWbhw9Mj4wO_a",
+			'response' => $this->input->post('g-recaptcha-response')
+		);
+
+		$verify = curl_init();
+		curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+		curl_setopt($verify, CURLOPT_POST, true);
+		curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));
+		curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+		$response = curl_exec($verify);
+		return json_decode($response);
+	}
+
+	/**
 	 * Set Session User Data
 	 * 
 	 * @param array $validAccount account yang valid
 	 */
-	private function setSessionData(array $validAccount) : void
+	private function setSessionData(array $validAccount): void
 	{
 		$this->session->set_userdata([
 			"name" 		=> $validAccount['admin_name'],
@@ -98,7 +123,7 @@ class Authentication extends CI_Controller {
 			"isAdmin"	=> true
 		]);
 
-		redirect('0/dashboard','refresh');
+		redirect('0/dashboard', 'refresh');
 	}
 
 	/**
@@ -106,10 +131,10 @@ class Authentication extends CI_Controller {
 	 * 
 	 * @return void
 	 */
-	public function signOut() : void
+	public function signOut(): void
 	{
 		$this->session->sess_destroy();
-		redirect('service/sign-in','refresh');
+		redirect('service/sign-in', 'refresh');
 	}
 }
 

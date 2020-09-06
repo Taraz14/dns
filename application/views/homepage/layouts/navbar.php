@@ -1,7 +1,7 @@
 <div class="row border-bottom white-bg">
             <nav class="navbar navbar-expand-lg navbar-static-top" role="navigation">
 
-                    <a href="<?= site_url();?>" class="navbar-brand">DNS</a>
+                    <a href="<?= site_url();?>" class="navbar-brand">Penentuan Status Gizi</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-reorder"></i>
                     </button>
@@ -9,8 +9,14 @@
                 <div class="navbar-collapse collapse" id="navbar">
                     <ul class="nav navbar-nav mr-auto">
                         <li class="active">
-                            <a aria-expanded="false" role="button" href="<?= site_url(); ?>"> Home</a>
-                        </li><!-- 
+                            <!-- <a aria-expanded="false" role="button" href="<?= site_url('history'); ?>"> History</a> -->
+                            <a aria-expanded="false" role="button" href="<?= site_url();?>">Home</a>
+                        </li>
+                        <li class="active">
+                            <a aria-expanded="false" role="button" href="<?= site_url('history'); ?>"> History</a>
+                        </li>
+
+                        <!-- 
                         <li class="dropdown">
                             <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu</a>
                             <ul role="menu" class="dropdown-menu">
